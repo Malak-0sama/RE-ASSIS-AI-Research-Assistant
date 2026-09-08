@@ -1,0 +1,41 @@
+llm:
+  provider_priority: ["groq", "openai", "gemini", "huggingface", "ollama"]
+  temperature: 0.2
+  max_tokens: 3000
+  timeout_seconds: 30
+  max_retries_per_provider: 1
+  groq_model: "llama-3.3-70b-versatile"
+  openai_model: "gpt-4o-mini"
+  gemini_model: "gemini-3.6-flash"
+  huggingface_model: "meta-llama/Meta-Llama-3-8B-Instruct"
+  ollama_model: "llama3.1"
+
+embedding:
+  model_name: "BAAI/bge-small-en-v1.5"
+  device: "cpu"
+  normalize_embeddings: true
+  batch_size: 32
+
+chunking:
+  chunk_size: 1000
+  chunk_overlap: 150
+  separators: ["\n\n", "\n", ". ", " ", ""]
+
+retrieval:
+  top_k: 5
+  score_threshold: null
+
+vectordb:
+  persist_directory: "./data/chroma"
+  collection_prefix: "paper"
+
+cache:
+  enabled: true
+  ttl_seconds: 3600
+  max_size: 256
+
+logging:
+  level: "INFO"
+  log_dir: "./logs"
+  rotation: "10 MB"
+  retention: "7 days"
